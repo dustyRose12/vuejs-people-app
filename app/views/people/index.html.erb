@@ -1,17 +1,9 @@
 <div id="app">
 
-  <h2>People</h2>
-  <div v-for="person in people" v-on:click="toggleBio(person)">
-    <h4>Name: {{ person.name }} <button v-on:click="deletePerson(person)">Delete</button> </h4>
-    <h5 v-bind:class="{strike: person.bioVisible}">Bio: {{ person.bio}}</h5> <!-- you can bind another style class to this v-bind:class, in this case strike is the one you're binding if bioVisible is true. So it does 2 things, it toggles it from the toggleBio call, and it strikes it also -->
-    <br>
-</div>
-<div >
-  Counter: {{ people.length }}
-</div>
-
-
   <h4>Add a Person:</h4>
+  <ul>
+    <li v-for="error in errors">{{ error }}</li>
+  </ul>
   <div>
     Enter Name:  <input v-model="newPersonName">
   </div>
@@ -20,6 +12,18 @@
  </div>
 
  <button v-on:click="addPerson()">Add Person</button>
+
+
+  <h2>People</h2>
+  <div v-for="person in people" v-on:click="toggleBio(person)">
+    <h4>Name: {{ person.name }} <button v-on:click="deletePerson(person)">Delete</button> </h4>
+    <h5 v-if="{strike: person.bioVisible}">Bio: {{ person.bio}}</h5> <!-- you can bind another style class to this v-bind:class, in this case strike is the one you're binding if bioVisible is true. So it does 2 things, it toggles it from the toggleBio call, and it strikes it also -->
+    <br>
+</div>
+<div >
+  Counter: {{ people.length }}
+</div>
+
 
 
 </div>
